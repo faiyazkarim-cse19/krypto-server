@@ -16,14 +16,15 @@ const db = mysql.createConnection({
 });
 
 
-app.post('/create', (req, res) => {
+app.post("/create", (req, res) => {
     const email = req.body.email;
     const coin = req.body.coin;
     const amount = req.body.amount;
+    const priceOfTransactions = req.body.priceOfTransactions;
  
     db.query(
-        "INSERT INTO input (I_email, I_coin, I_amount) VALUES (?, ?, ?)",
-        [email, coin, amount], (err, result) => {
+        "INSERT INTO Input (I_email, I_coin, I_amount, I_cost) VALUES (?, ?, ?, ?)",
+        [email, coin, amount, priceOfTransactions], (err, result) => {
             if (err) {
                 console.log(err)
             }   else {
@@ -63,6 +64,28 @@ app.post("/transactions", (req, res) => {
             }
     })
 })*/
+
+app.post("/funds", (req, res) => {  
+    const email = req.body.email
+
+    db.query("SELECT funds FROM clientinfo WHERE clientMail=?",[email], (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+});
+ 
+app.get("/prices", (req, res) => {
+  db.query("SELECT coin, price FROM prices", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
 
 app.post('/register', (req,res) => {
     const name = req.body.name
