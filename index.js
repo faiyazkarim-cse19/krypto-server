@@ -46,25 +46,6 @@ app.post("/transactions", (req, res) => {
     });
 });
 
-/*app.get('/transaction', (req, res) => {
-    const email = req.body.email 
-
-    db.query("SELECT T_coin, T_amount FROM transactions WHERE T_email = ?;", 
-    [email], (err, result) => {
-        if (err){
-            res.send({err: err})
-        }
-            if(result.length > 0)
-            {
-            res.send(result);
-            }
-            else
-            {
-              res.send({message: "Wrong email!"});  
-            }
-    })
-})*/
-
 app.post("/funds", (req, res) => {  
     const email = req.body.email
 
