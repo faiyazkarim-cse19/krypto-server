@@ -92,7 +92,7 @@ app.post('/register', (req,res) => {
     const email = req.body.email 
     const password = req.body.password
 
-    db.query("INSERT INTO clientinfo (clientName, clientMail, clientPassword) VALUES (?,?,?);", 
+    db.query("INSERT INTO clientinfo (clientName, clientMail, clientPassword, funds) VALUES (?,?,?, 100000);", 
     [name, email, password], (err, result) => {
         if (err){
             console.log(err)
