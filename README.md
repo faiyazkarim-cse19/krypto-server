@@ -1,5 +1,5 @@
 # krypto-server
-The backend for a cryptocurrency website made using react.
+The backend for a cryptocurrency [website](https://github.com/sfk-aayan/Krypto) made using react.
 
 To run the server:
 1. Clone this repository.
